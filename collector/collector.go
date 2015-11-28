@@ -1,28 +1,28 @@
 package collector
 
 import (
-	"net/url"
-	"net/http"
 	"encoding/json"
 	"fmt"
+	"net/http"
+	"net/url"
 )
 
 type Status struct {
 	Pool               string `json:"pool"`
-	StartSince         int `json:"start since"`
-	AcceptedConn       int `json:"accepted conn"`
-	TotalProcesses     int `json:"total processes"`
-	IdleProcesses      int `json:"idle processes"`
-	ActiveProcesses    int `json:"active processes"`
-	MaxActiveProcesses int `json:"max active processes"`
-	MaxChildrenReached int `json:"max children reached"`
-	ListenQueue        int `json:"listen queue"`
-	ListenQueueLen     int `json:"listen queue len"`
-	MaxListenQueue     int `json:"max listen queue"`
-	SlowRequests       int `json:"slow requests"`
+	StartSince         int    `json:"start since"`
+	AcceptedConn       int    `json:"accepted conn"`
+	TotalProcesses     int    `json:"total processes"`
+	IdleProcesses      int    `json:"idle processes"`
+	ActiveProcesses    int    `json:"active processes"`
+	MaxActiveProcesses int    `json:"max active processes"`
+	MaxChildrenReached int    `json:"max children reached"`
+	ListenQueue        int    `json:"listen queue"`
+	ListenQueueLen     int    `json:"listen queue len"`
+	MaxListenQueue     int    `json:"max listen queue"`
+	SlowRequests       int    `json:"slow requests"`
 }
 
-type PhpfpmCollector struct {}
+type PhpfpmCollector struct{}
 
 func New() *PhpfpmCollector {
 	return &PhpfpmCollector{}

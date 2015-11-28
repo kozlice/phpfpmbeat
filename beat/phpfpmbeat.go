@@ -8,8 +8,8 @@ import (
 	"github.com/elastic/libbeat/cfgfile"
 	"github.com/elastic/libbeat/logp"
 
-	"github.com/kozlice/phpfpmbeat/publisher"
 	"github.com/kozlice/phpfpmbeat/collector"
+	"github.com/kozlice/phpfpmbeat/publisher"
 )
 
 const selector = "phpfpmbeat"
@@ -17,10 +17,10 @@ const selector = "phpfpmbeat"
 type Phpfpmbeat struct {
 	PfbConfig ConfigSettings
 
-	period    time.Duration
-	urls      []*url.URL
+	period time.Duration
+	urls   []*url.URL
 
-	done      chan struct{}
+	done chan struct{}
 }
 
 func New() *Phpfpmbeat {
@@ -85,8 +85,8 @@ func (pfb *Phpfpmbeat) Run(b *beat.Beat) error {
 	ticker := time.NewTicker(pfb.period)
 	defer ticker.Stop()
 
-    c := collector.New()
-    p := publisher.New(b.Events)
+	c := collector.New()
+	p := publisher.New(b.Events)
 
 	for {
 		select {
@@ -99,11 +99,11 @@ func (pfb *Phpfpmbeat) Run(b *beat.Beat) error {
 
 		for _, u := range pfb.urls {
 			s, err := c.Collect(*u)
-			if (err != nil) {
+			if err != nil {
 				logp.Err("Failed to read PHP-FPM status: %v", err)
 			} else {
-                p.Publish(s)
-            }
+				p.Publish(s)
+			}
 		}
 
 		timerEnd := time.Now()
