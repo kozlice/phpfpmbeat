@@ -110,7 +110,7 @@ phpfpm:
       type: int
       description: >
         The number of times the process limit has been reached (when FPM tries to start more children).
-        Only works with ‘dynamic’ and ‘ondemand’ pool types.
+        Only works with "dynamic" and "ondemand" pool types.
 
     - name: slow_requests
       type: int
