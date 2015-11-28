@@ -62,4 +62,4 @@ There is no support for per-process info for now.
 
 ## Contribution
 
-Feel free to fork and create issues. I had no experience with Go language previously, so there should be a lot of things to improve.
+Feel free to fork, create merge requests and open issues. I had no experience with Go language previously, so there should be a lot of things to improve.
