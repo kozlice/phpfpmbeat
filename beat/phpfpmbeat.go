@@ -72,7 +72,6 @@ func (pfb *Phpfpmbeat) Config(b *beat.Beat) error {
 }
 
 func (pfb *Phpfpmbeat) Setup(b *beat.Beat) error {
-	// pfb.events = b.Events
 	pfb.done = make(chan struct{})
 	return nil
 }
