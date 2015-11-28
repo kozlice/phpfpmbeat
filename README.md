@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/kozlice/phpfpmbeat.svg?branch=master)](https://travis-ci.org/kozlice/phpfpmbeat)
+
 # phpfpmbeat
 
 The [Beat](https://www.elastic.co/products/beats) for PHP-FPM monitoring.
