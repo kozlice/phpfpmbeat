@@ -9,6 +9,7 @@ import (
 
 type Status struct {
 	Pool               string `json:"pool"`
+	ProcessManager     string `json:"process manager"`
 	StartSince         int    `json:"start since"`
 	AcceptedConn       int    `json:"accepted conn"`
 	TotalProcesses     int    `json:"total processes"`
@@ -50,6 +51,7 @@ func (c *PhpfpmCollector) Collect(u url.URL) (map[string]interface{}, error) {
 
 	v = map[string]interface{}{
 		"pool":                 st.Pool,
+		"process_manager":      st.ProcessManager,
 		"start_since":          st.StartSince,
 		"accepted_conn":        st.AcceptedConn,
 		"total_processes":      st.TotalProcesses,

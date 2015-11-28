@@ -14,6 +14,7 @@ func TestPhpfpmCollector(t *testing.T) {
 	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		data := []byte(`{
     "pool": "www",
+    "process manager": "dynamic",
     "start since": 16527,
     "accepted conn": 941,
     "total processes": 4,
@@ -35,6 +36,7 @@ func TestPhpfpmCollector(t *testing.T) {
 	s, _ := c.Collect(*u)
 
 	assert.Equal(t, s["pool"], "www")
+	assert.Equal(t, s["process_manager"], "dynamic")
 	assert.Equal(t, s["start_since"], 16527)
 	assert.Equal(t, s["accepted_conn"], 941)
 	assert.Equal(t, s["total_processes"], 4)
@@ -43,7 +45,7 @@ func TestPhpfpmCollector(t *testing.T) {
 	assert.Equal(t, s["max_active_processes"], 3)
 	assert.Equal(t, s["max_children_reached"], 4)
 	assert.Equal(t, s["listen_queue"], 0)
-	assert.Equal(t, s["listen_queue_len"], 64)
+	assert.Equal(t, s["listen_queue_len"], 128)
 	assert.Equal(t, s["max_listen_queue"], 13)
 	assert.Equal(t, s["slow_requests"], 4)
 }
