@@ -1,0 +1,11 @@
+nginx:
+  build: ./etc/nginx
+  ports:
+    - "80:80"
+  links:
+    - fpm
+
+fpm:
+  build: ./etc/phpfpm
+  ports:
+    - "9000:9000"
