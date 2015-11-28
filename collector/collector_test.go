@@ -22,7 +22,7 @@ func TestPhpfpmCollector(t *testing.T) {
     "max active processes": 3,
     "max children reached": 4,
     "listen queue": 0,
-    "listen queue len": 64,
+    "listen queue len": 128,
     "max listen queue": 13,
     "slow requests": 4
 }`)

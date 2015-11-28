@@ -8,8 +8,8 @@ import (
 	"github.com/elastic/libbeat/cfgfile"
 	"github.com/elastic/libbeat/logp"
 
-    "github.com/kozlice/phpfpmbeat/beat/publisher"
-	"github.com/kozlice/phpfpmbeat/beat/collector"
+	"github.com/kozlice/phpfpmbeat/publisher"
+	"github.com/kozlice/phpfpmbeat/collector"
 )
 
 const selector = "phpfpmbeat"
