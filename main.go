@@ -10,5 +10,5 @@ var Version = "1.0.0-beta1"
 var Name = "phpfpmbeat"
 
 func main() {
-	beat.Run(Name, Version, phpfpmbeat.New())
+	beat.Run(Name, Version, phpfpmbeat.NewPhpfpmBeat())
 }

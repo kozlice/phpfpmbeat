@@ -11,14 +11,14 @@ type PhpfpmPublisher struct {
 	client publisher.Client
 }
 
-func New(c publisher.Client) *PhpfpmPublisher {
+func NewFpmPublisher(c publisher.Client) *PhpfpmPublisher {
 	return &PhpfpmPublisher{client: c}
 }
 
-func (pfb *PhpfpmPublisher) Publish(s map[string]interface{}) {
-	pfb.client.PublishEvent(common.MapStr{
+func (fp *PhpfpmPublisher) Publish(data map[string]interface{}) {
+	fp.client.PublishEvent(common.MapStr{
 		"@timestamp": common.Time(time.Now()),
 		"type":       "phpfpm",
-		"phpfpm":     s,
+		"phpfpm":     data,
 	})
 }

@@ -28,7 +28,7 @@ func (c PhpfpmTestClient) PublishEvents(events []common.MapStr, opts ...publishe
 
 func TestPhpfpmPublisher(t *testing.T) {
 	c := make(chan common.MapStr, 16)
-	p := New(&PhpfpmTestClient{Channel: c})
+	p := NewFpmPublisher(&PhpfpmTestClient{Channel: c})
 
 	s := map[string]interface{}{}
 

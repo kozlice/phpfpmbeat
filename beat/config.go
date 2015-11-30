@@ -1,10 +1,10 @@
 package beat
 
-type PhpfpmConfig struct {
+type FpmConfig struct {
 	Period *int64
 	URLs   []string
 }
 
 type ConfigSettings struct {
-	Input PhpfpmConfig
+	Input FpmConfig
 }
