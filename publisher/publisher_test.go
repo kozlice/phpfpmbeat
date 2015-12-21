@@ -5,8 +5,8 @@ import (
 
 	"encoding/json"
 
-	"github.com/elastic/libbeat/common"
-	"github.com/elastic/libbeat/publisher"
+	"github.com/elastic/beats/libbeat/common"
+	"github.com/elastic/beats/libbeat/publisher"
 	"github.com/stretchr/testify/assert"
 )
 
