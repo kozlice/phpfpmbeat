@@ -1,7 +1,14 @@
 {
 	"ImportPath": "github.com/kozlice/phpfpmbeat",
 	"GoVersion": "go1.5.1",
+	"Packages": [
+		"./..."
+	],
 	"Deps": [
+		{
+			"ImportPath": "github.com/davecgh/go-spew/spew",
+			"Rev": "5215b55f46b2b919f50a1df0eaa5886afe4e3b3d"
+		},
 		{
 			"ImportPath": "github.com/elastic/beats/libbeat/beat",
 			"Comment": "v1.0.0-1808-g1873d72",
@@ -48,6 +55,15 @@
 		{
 			"ImportPath": "github.com/nranchev/go-libGeoIP",
 			"Rev": "c78e8bd2dd3599feb21fd30886043979e82fe948"
+		},
+		{
+			"ImportPath": "github.com/pmezard/go-difflib/difflib",
+			"Rev": "d8ed2627bdf02c080bf22230dbb337003b7aba2d"
+		},
+		{
+			"ImportPath": "github.com/stretchr/testify/assert",
+			"Comment": "v1.0-83-gd797d25",
+			"Rev": "d797d25e0fa6d53be3b1a216d24e868d6a1912ef"
 		},
 		{
 			"ImportPath": "gopkg.in/yaml.v2",

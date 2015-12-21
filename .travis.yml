@@ -5,9 +5,4 @@ go:
 
 sudo: false
 
-install:
-  - go get github.com/tools/godep
-  - go get github.com/stretchr/testify/assert
-  - godep restore
-
 script: make test
