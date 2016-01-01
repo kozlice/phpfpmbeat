@@ -1,6 +1,6 @@
 {
 	"ImportPath": "github.com/kozlice/phpfpmbeat",
-	"GoVersion": "go1.5.1",
+	"GoVersion": "go1.5",
 	"Packages": [
 		"./..."
 	],
@@ -64,6 +64,10 @@
 			"ImportPath": "github.com/stretchr/testify/assert",
 			"Comment": "v1.0-83-gd797d25",
 			"Rev": "d797d25e0fa6d53be3b1a216d24e868d6a1912ef"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/windows",
+			"Rev": "833a04a10549a95dc34458c195cbad61bbb6cb4d"
 		},
 		{
 			"ImportPath": "gopkg.in/yaml.v2",
