@@ -5,8 +5,8 @@ import (
 
 	"encoding/json"
 
-	"github.com/elastic/libbeat/common"
-	"github.com/elastic/libbeat/publisher"
+	"github.com/elastic/beats/libbeat/common"
+	"github.com/elastic/beats/libbeat/publisher"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -28,7 +28,7 @@ func (c PhpfpmTestClient) PublishEvents(events []common.MapStr, opts ...publishe
 
 func TestPhpfpmPublisher(t *testing.T) {
 	c := make(chan common.MapStr, 16)
-	p := New(&PhpfpmTestClient{Channel: c})
+	p := NewFpmPublisher(&PhpfpmTestClient{Channel: c})
 
 	s := map[string]interface{}{}
 

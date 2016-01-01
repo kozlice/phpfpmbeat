@@ -7,7 +7,7 @@ import (
 	"net/url"
 )
 
-type Status struct {
+type PhpfpmStatus struct {
 	Pool               string `json:"pool"`
 	ProcessManager     string `json:"process manager"`
 	StartSince         int    `json:"start since"`
@@ -25,14 +25,16 @@ type Status struct {
 
 type PhpfpmCollector struct{}
 
-func New() *PhpfpmCollector {
+func NewPhpfpmCollector() *PhpfpmCollector {
 	return &PhpfpmCollector{}
 }
 
 func (c *PhpfpmCollector) Collect(u url.URL) (map[string]interface{}, error) {
-	var err error
-	var st Status
-	var v map[string]interface{}
+	var (
+		err error
+		s PhpfpmStatus
+		v map[string]interface{}
+	)
 
 	res, err := http.Get(u.String())
 	if err != nil {
@@ -44,25 +46,25 @@ func (c *PhpfpmCollector) Collect(u url.URL) (map[string]interface{}, error) {
 		return v, fmt.Errorf("HTTP%s", res.Status)
 	}
 
-	err = json.NewDecoder(res.Body).Decode(&st)
+	err = json.NewDecoder(res.Body).Decode(&s)
 	if err != nil {
 		return v, err
 	}
 
 	v = map[string]interface{}{
-		"pool":                 st.Pool,
-		"process_manager":      st.ProcessManager,
-		"start_since":          st.StartSince,
-		"accepted_conn":        st.AcceptedConn,
-		"total_processes":      st.TotalProcesses,
-		"idle_processes":       st.IdleProcesses,
-		"active_processes":     st.ActiveProcesses,
-		"max_active_processes": st.MaxActiveProcesses,
-		"max_children_reached": st.MaxChildrenReached,
-		"listen_queue":         st.ListenQueue,
-		"listen_queue_len":     st.ListenQueueLen,
-		"max_listen_queue":     st.MaxListenQueue,
-		"slow_requests":        st.SlowRequests,
+		"pool":                 s.Pool,
+		"process_manager":      s.ProcessManager,
+		"start_since":          s.StartSince,
+		"accepted_conn":        s.AcceptedConn,
+		"total_processes":      s.TotalProcesses,
+		"idle_processes":       s.IdleProcesses,
+		"active_processes":     s.ActiveProcesses,
+		"max_active_processes": s.MaxActiveProcesses,
+		"max_children_reached": s.MaxChildrenReached,
+		"listen_queue":         s.ListenQueue,
+		"listen_queue_len":     s.ListenQueueLen,
+		"max_listen_queue":     s.MaxListenQueue,
+		"slow_requests":        s.SlowRequests,
 	}
 	return v, nil
 }
