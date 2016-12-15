@@ -1,3 +1,7 @@
+// TODO: Tests
+// vendor/github.com/elastic/beats/metricbeat/module/apache/status/status_test.go:4
+// vendor/github.com/elastic/beats/metricbeat/module/apache/status/status_integration_test.go:2
+
 package beater
 
 import (
@@ -12,7 +16,6 @@ import (
 	"encoding/json"
 	"github.com/kozlice/phpfpmbeat/config"
 	"net/http"
-	"net/url"
 )
 
 type Phpfpmbeat struct {
@@ -50,6 +53,7 @@ func (bt *Phpfpmbeat) Run(b *beat.Beat) error {
 			event, err := bt.collect(b, u)
 			if err != nil {
 				logp.Err("An error occured: %v", err)
+				continue
 			}
 			bt.client.PublishEvent(event)
 			logp.Info("Event sent")
@@ -78,8 +82,8 @@ type Phpfpmstatus struct {
 	SlowRequests       int    `json:"slow requests"`
 }
 
-func (bt *Phpfpmbeat) collect(b *beat.Beat, u *url.URL) (map[string]interface{}, error) {
-	res, err := http.Get(u.String())
+func (bt *Phpfpmbeat) collect(b *beat.Beat, u string) (map[string]interface{}, error) {
+	res, err := http.Get(u)
 	if err != nil {
 		return nil, err
 	}
