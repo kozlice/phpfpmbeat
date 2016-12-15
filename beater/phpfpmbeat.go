@@ -99,7 +99,7 @@ func (bt *Phpfpmbeat) collect(b *beat.Beat, u string) (map[string]interface{}, e
 		return nil, err
 	}
 
-	result := common.MapStr{
+	return common.MapStr{
 		"@timestamp":           common.Time(time.Now()),
 		"type":                 b.Name,
 		"pool":                 s.Pool,
@@ -115,6 +115,5 @@ func (bt *Phpfpmbeat) collect(b *beat.Beat, u string) (map[string]interface{}, e
 		"listen_queue_len":     s.ListenQueueLen,
 		"max_listen_queue":     s.MaxListenQueue,
 		"slow_requests":        s.SlowRequests,
-	}
-	return result, nil
+	}, nil
 }
