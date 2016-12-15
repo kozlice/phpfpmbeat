@@ -7,7 +7,6 @@ services:
 language: go
 
 go:
-  - 1.6
   - 1.7
 
 os:
@@ -37,6 +36,7 @@ before_install:
 
 install:
   - go get github.com/elastic/beats/libbeat
+  - make copy-vendor
 
 script:
   - make $TARGETS
