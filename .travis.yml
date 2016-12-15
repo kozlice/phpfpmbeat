@@ -10,8 +10,6 @@ go:
   - 1.6
   - 1.7
 
-go_import_path: $HOME/gopath/src/github.com/kozlice/phpfpmbeat/
-
 os:
   - linux
   - osx
@@ -36,10 +34,6 @@ before_install:
   - rsync -az ${TRAVIS_BUILD_DIR}/ $HOME/gopath/src/github.com/kozlice/phpfpmbeat/
   - export TRAVIS_BUILD_DIR=$HOME/gopath/src/github.com/kozlice/phpfpmbeat/
   - cd $HOME/gopath/src/github.com/kozlice/phpfpmbeat/
-
-before_script:
-  - go get github.com/elastic/beats
-  - make copy-vendor
 
 script:
   - make $TARGETS
