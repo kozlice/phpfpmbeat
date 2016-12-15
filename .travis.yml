@@ -35,6 +35,9 @@ before_install:
   - export TRAVIS_BUILD_DIR=$HOME/gopath/src/github.com/kozlice/phpfpmbeat/
   - cd $HOME/gopath/src/github.com/kozlice/phpfpmbeat/
 
+install:
+  - go get github.com/elastic/beats/libbeat
+
 script:
   - make $TARGETS
 
