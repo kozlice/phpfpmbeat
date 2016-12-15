@@ -22,6 +22,9 @@ addons:
   apt:
     packages:
       - python-virtualenv
+      - glide
+    sources:
+      - sourceline: 'ppa:masterminds/glide'
 
 before_install:
   # Redo the travis setup but with the elastic/libbeat path. This is needed so the package path is correct
@@ -31,7 +34,6 @@ before_install:
   - cd $HOME/gopath/src/github.com/kozlice/phpfpmbeat/
 
 install:
-  - go get github.com/Masterminds/glide
   - go get github.com/elastic/beats/libbeat
   - make setup
 
