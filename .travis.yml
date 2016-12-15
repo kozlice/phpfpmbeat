@@ -31,8 +31,9 @@ before_install:
   - cd $HOME/gopath/src/github.com/kozlice/phpfpmbeat/
 
 install:
+  - go get github.com/Masterminds/glide
   - go get github.com/elastic/beats/libbeat
-  - make copy-vendor
+  - make setup
 
 script:
   - make $TARGETS
