@@ -1,0 +1,7 @@
+/.idea
+/build
+
+.DS_Store
+/phpfpmbeat
+/phpfpmbeat.test
+*.pyc

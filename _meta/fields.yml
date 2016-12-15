@@ -1,0 +1,57 @@
+- key: phpfpmbeat
+  title: phpfpmbeat
+  description: Contains PHP-FPM status, data is collected from PHP-FPM status page.
+  fields:
+    - name: pool
+      type: keyword
+      description: >
+        Name of the PHP-FPM pool.
+    - name: process_manager
+      type: keyword
+      description: >
+        Process manager mode: "static", "dynamic" or "ondemand".
+    - name: start_since
+      type: long
+      description: >
+        Number of seconds since FPM has started or reloaded. Reloading PHP-FPM will reset this value.
+    - name: accepted_conn
+      type: long
+      description: >
+        Number of requests accepted by the pool.
+    - name: listen_queue
+      type: long
+      description: >
+        Number of requests in the queue of pending connections.
+    - name: max_listen_queue
+      type: long
+      description: >
+        Maximum number of requests in the queue of pending connections since FPM has started.
+    - name: listen_queue_len
+      type: long
+      description: >
+        Size of the socket queue of pending connections.
+    - name: idle_processes
+      type: long
+      description: >
+        Number of idle processes.
+    - name: active_processes
+      type: long
+      description: >
+        Number of active processes.
+    - name: total_processes
+      type: long
+      description: >
+        Number of idle + active processes.
+    - name: max_active_processes
+      type: long
+      description: >
+        Maximum number of active processes since FPM has started.
+    - name: max_children_reached
+      type: long
+      description: >
+        Number of times the process limit has been reached (when FPM tries to start more children).
+        Only works with "dynamic" and "ondemand" pool types.
+    - name: slow_requests
+      type: long
+      description: >
+        Number of requests that exceeded your request_slowlog_timeout value.
