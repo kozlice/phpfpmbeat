@@ -1,8 +1,8 @@
 package config
 
 import (
-	"time"
 	"net/url"
+	"time"
 )
 
 type Config struct {
@@ -14,5 +14,5 @@ var defaultUrl, _ = url.Parse("http://127.0.0.1/status")
 
 var DefaultConfig = Config{
 	Period: 1 * time.Second,
-	URLs: []*url.URL{defaultUrl},
+	URLs:   []*url.URL{defaultUrl},
 }

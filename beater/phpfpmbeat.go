@@ -9,10 +9,10 @@ import (
 	"github.com/elastic/beats/libbeat/logp"
 	"github.com/elastic/beats/libbeat/publisher"
 
-	"github.com/kozlice/phpfpmbeat/config"
-	"net/url"
 	"encoding/json"
+	"github.com/kozlice/phpfpmbeat/config"
 	"net/http"
+	"net/url"
 )
 
 type Phpfpmbeat struct {
@@ -28,7 +28,7 @@ func New(b *beat.Beat, cfg *common.Config) (beat.Beater, error) {
 	}
 
 	bt := &Phpfpmbeat{
-		done: make(chan struct{}),
+		done:   make(chan struct{}),
 		config: config,
 	}
 	return bt, nil
