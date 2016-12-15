@@ -35,7 +35,8 @@ before_install:
   - cd $HOME/gopath/src/github.com/kozlice/phpfpmbeat/
 
 install:
-  - true
+  - go get github.com/elastic/beats
+  - make copy-vendor
 
 script:
   - make $TARGETS
