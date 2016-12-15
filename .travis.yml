@@ -9,10 +9,6 @@ language: go
 go:
   - 1.7
 
-os:
-  - linux
-  - osx
-
 env:
   matrix:
     - TARGETS="check"
