@@ -1,55 +1,65 @@
 # Phpfpmbeat
 
-Welcome to Phpfpmbeat.
+[![Build Status](https://travis-ci.org/kozlice/phpfpmbeat.svg?branch=master)](https://travis-ci.org/kozlice/phpfpmbeat)
 
-Ensure that this folder is at the following location:
-`${GOPATH}/github.com/kozlice`
+The [Beat](https://www.elastic.co/products/beats) for PHP-FPM monitoring.
 
-## Getting Started with Phpfpmbeat
+As Go currently doesn't provide possibility to connect directly to FPM via FastCGI as a client, PHP-FPM must be configured to show its status via some webserver. Example for Nginx can be found [here](https://easyengine.io/tutorials/php/fpm-status-page/).
+
+Feel free to fork, create merge requests and open issues. I had no experience with Go language previously, so there should be a lot of things to improve.
 
 ### Requirements
 
 * [Golang](https://golang.org/dl/) 1.7
 
-### Init Project
-To get running with Phpfpmbeat and also install the
-dependencies, run the following command:
 
-```
-make setup
-```
+### Exported fields
 
-It will create a clean git history for each major step. Note that you can always rewrite the history if you wish before pushing your changes.
+Phpfpmbeat exports all pool information fields provided by PHP-FPM, except FPM start time. To make `slow_requests` counter work, [enable `request_slow_log` feature](https://easyengine.io/tutorials/php/fpm-slow-log/) in you FPM config.
 
-To push Phpfpmbeat in the git repository, run the following commands:
+Document sample:
 
-```
-git remote set-url origin https://github.com/kozlice/phpfpmbeat
-git push origin master
-```
+    {
+      "@timestamp": "2015-11-28T22:12:04.367Z",
+      "beat": {
+        "hostname": "Valentins-iMac.local",
+        "name": "Valentins-iMac.local"
+      },
+      "count": 1,
+      "phpfpm": {
+        "accepted_conn": 218,
+        "active_processes": 1,
+        "idle_processes": 1,
+        "listen_queue": 0,
+        "listen_queue_len": 128,
+        "max_active_processes": 1,
+        "max_children_reached": 0,
+        "max_listen_queue": 0,
+        "pool": "www",
+        "process_manager": "dynamic",
+        "slow_requests": 0,
+        "start_since": 1176,
+        "total_processes": 2
+      },
+      "type": "phpfpm"
+    }
 
-For further development, check out the [beat developer guide](https://www.elastic.co/guide/en/beats/libbeat/current/new-beat.html).
+There is no support for per-process info for now.
 
-### Build
 
-To build the binary for Phpfpmbeat run the command below. This will generate a binary
-in the same directory with the name phpfpmbeat.
+### Usage
+
+To build the binary for Phpfpmbeat run the command below. This will generate a binary in the same directory with the name phpfpmbeat.
 
 ```
 make
 ```
-
-
-### Run
 
 To run Phpfpmbeat with debugging output enabled, run:
 
 ```
 ./phpfpmbeat -c phpfpmbeat.yml -e -d "*"
 ```
-
-
-### Test
 
 To test Phpfpmbeat, run the following command:
 
@@ -67,26 +77,6 @@ make coverage-report
 
 The test coverage is reported in the folder `./build/coverage/`
 
-### Update
-
-Each beat has a template for the mapping in elasticsearch and a documentation for the fields
-which is automatically generated based on `etc/fields.yml`.
-To generate etc/phpfpmbeat.template.json and etc/phpfpmbeat.asciidoc
-
-```
-make update
-```
-
-
-### Cleanup
-
-To clean  Phpfpmbeat source code, run the following commands:
-
-```
-make fmt
-make simplify
-```
-
 To clean up the build directory and generated artifacts, run:
 
 ```
@@ -94,26 +84,7 @@ make clean
 ```
 
 
-### Clone
+### Thanks to
 
-To clone Phpfpmbeat from the git repository, run the following commands:
-
-```
-mkdir -p ${GOPATH}/github.com/kozlice
-cd ${GOPATH}/github.com/kozlice
-git clone https://github.com/kozlice/phpfpmbeat
-```
-
-
-For further development, check out the [beat developer guide](https://www.elastic.co/guide/en/beats/libbeat/current/new-beat.html).
-
-
-## Packaging
-
-The beat frameworks provides tools to crosscompile and package your beat for different platforms. This requires [docker](https://www.docker.com/) and vendoring as described above. To build packages of your beat, run the following command:
-
-```
-make package
-```
-
-This will fetch and create all images required for the build process. The hole process to finish can take several minutes.
+- Elastic for their Beat creation tutorial
+- [mrkschan](https://github.com/mrkschan) for his [nginxbeat](https://github.com/mrkschan/nginxbeat), which I used as a prototype
