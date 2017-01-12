@@ -21,28 +21,26 @@ Phpfpmbeat exports all pool information fields provided by PHP-FPM, except FPM s
 Document sample:
 
     {
-      "@timestamp": "2015-11-28T22:12:04.367Z",
+      "@timestamp": "2017-01-12T01:08:26.889Z",
+      "accepted_conn": 22,
+      "active_processes": 1,
       "beat": {
         "hostname": "Valentins-iMac.local",
-        "name": "Valentins-iMac.local"
+        "name": "Valentins-iMac.local",
+        "version": "5.1.2"
       },
-      "count": 1,
-      "phpfpm": {
-        "accepted_conn": 218,
-        "active_processes": 1,
-        "idle_processes": 1,
-        "listen_queue": 0,
-        "listen_queue_len": 128,
-        "max_active_processes": 1,
-        "max_children_reached": 0,
-        "max_listen_queue": 0,
-        "pool": "www",
-        "process_manager": "dynamic",
-        "slow_requests": 0,
-        "start_since": 1176,
-        "total_processes": 2
-      },
-      "type": "phpfpm"
+      "idle_processes": 1,
+      "listen_queue": 0,
+      "listen_queue_len": 128,
+      "max_active_processes": 1,
+      "max_children_reached": 0,
+      "max_listen_queue": 0,
+      "pool": "www",
+      "process_manager": "dynamic",
+      "slow_requests": 0,
+      "start_since": 1730,
+      "total_processes": 2,
+      "type": "phpfpmbeat"
     }
 
 There is no support for per-process info for now.
