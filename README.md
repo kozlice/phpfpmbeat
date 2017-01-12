@@ -8,6 +8,7 @@ As Go currently doesn't provide possibility to connect directly to FPM via FastC
 
 Feel free to fork, create merge requests and open issues. I had no experience with Go language previously, so there should be a lot of things to improve.
 
+
 ### Requirements
 
 * [Golang](https://golang.org/dl/) 1.7
@@ -88,3 +89,8 @@ make clean
 
 - Elastic for their Beat creation tutorial
 - [mrkschan](https://github.com/mrkschan) for his [nginxbeat](https://github.com/mrkschan/nginxbeat), which I used as a prototype
+
+
+### TODOs
+
+Integration tests using Docker (in Travis as well)

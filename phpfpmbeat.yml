@@ -7,9 +7,9 @@ phpfpmbeat:
   period: 1s
   # List of URLs to PHP-FPM status page.
   # E.g. "http://127.0.0.1:8080/status", "http://example.com/status"
-  # Defaults to ["http://127.0.0.1/status"].
+  # Defaults to ["http://127.0.0.1/status?json"].
   urls:
-    - http://127.0.0.1/status
+    - http://127.0.0.1/status?json
 
 #================================ General =====================================
 

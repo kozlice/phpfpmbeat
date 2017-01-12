@@ -11,5 +11,5 @@ type Config struct {
 
 var DefaultConfig = Config{
 	Period: 1 * time.Second,
-	URLs:   []string{"http://127.0.0.1/status"},
+	URLs:   []string{"http://127.0.0.1/status?json"},
 }
